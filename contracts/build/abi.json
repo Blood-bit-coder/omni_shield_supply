@@ -1,0 +1,194 @@
+{
+  "program": "omni_shield_supply_v1.aleo",
+  "structs": [],
+  "records": [
+    {
+      "path": [
+        "SupplyItem"
+      ],
+      "fields": [
+        {
+          "name": "owner",
+          "ty": {
+            "Primitive": "Address"
+          },
+          "mode": "None"
+        },
+        {
+          "name": "item_id",
+          "ty": {
+            "Primitive": "Field"
+          },
+          "mode": "None"
+        },
+        {
+          "name": "quantity",
+          "ty": {
+            "Primitive": {
+              "UInt": "U64"
+            }
+          },
+          "mode": "None"
+        },
+        {
+          "name": "is_shipped",
+          "ty": {
+            "Primitive": "Boolean"
+          },
+          "mode": "None"
+        }
+      ]
+    },
+    {
+      "path": [
+        "BillOfLading"
+      ],
+      "fields": [
+        {
+          "name": "owner",
+          "ty": {
+            "Primitive": "Address"
+          },
+          "mode": "None"
+        },
+        {
+          "name": "from_node",
+          "ty": {
+            "Primitive": "Address"
+          },
+          "mode": "None"
+        },
+        {
+          "name": "to_node",
+          "ty": {
+            "Primitive": "Address"
+          },
+          "mode": "None"
+        },
+        {
+          "name": "timestamp",
+          "ty": {
+            "Primitive": {
+              "UInt": "U32"
+            }
+          },
+          "mode": "None"
+        }
+      ]
+    }
+  ],
+  "mappings": [],
+  "storage_variables": [],
+  "transitions": [
+    {
+      "name": "manufacture_item",
+      "is_async": false,
+      "inputs": [
+        {
+          "name": "receiver",
+          "ty": {
+            "Plaintext": {
+              "Primitive": "Address"
+            }
+          },
+          "mode": "None"
+        },
+        {
+          "name": "id",
+          "ty": {
+            "Plaintext": {
+              "Primitive": "Field"
+            }
+          },
+          "mode": "None"
+        },
+        {
+          "name": "qty",
+          "ty": {
+            "Plaintext": {
+              "Primitive": {
+                "UInt": "U64"
+              }
+            }
+          },
+          "mode": "None"
+        }
+      ],
+      "outputs": [
+        {
+          "ty": {
+            "Record": {
+              "path": [
+                "SupplyItem"
+              ],
+              "program": "omni_shield_supply_v1"
+            }
+          },
+          "mode": "None"
+        }
+      ]
+    },
+    {
+      "name": "transfer_custody",
+      "is_async": false,
+      "inputs": [
+        {
+          "name": "item",
+          "ty": {
+            "Record": {
+              "path": [
+                "SupplyItem"
+              ],
+              "program": "omni_shield_supply_v1"
+            }
+          },
+          "mode": "None"
+        },
+        {
+          "name": "next_owner",
+          "ty": {
+            "Plaintext": {
+              "Primitive": "Address"
+            }
+          },
+          "mode": "None"
+        },
+        {
+          "name": "time",
+          "ty": {
+            "Plaintext": {
+              "Primitive": {
+                "UInt": "U32"
+              }
+            }
+          },
+          "mode": "None"
+        }
+      ],
+      "outputs": [
+        {
+          "ty": {
+            "Record": {
+              "path": [
+                "SupplyItem"
+              ],
+              "program": "omni_shield_supply_v1"
+            }
+          },
+          "mode": "None"
+        },
+        {
+          "ty": {
+            "Record": {
+              "path": [
+                "BillOfLading"
+              ],
+              "program": "omni_shield_supply_v1"
+            }
+          },
+          "mode": "None"
+        }
+      ]
+    }
+  ]
+}
